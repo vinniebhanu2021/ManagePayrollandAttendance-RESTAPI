@@ -1,0 +1,112 @@
+@baseUrl = http://localhost:3000
+@tokenAdmin = Bearer <tokenAdmin>
+@tokenKaryawan = Bearer <tokenKaryawan>
+
+### Menguji POST /auth/register
+POST {{baseUrl}}/auth/register
+Content-Type: application/json
+
+{
+  "username": "boker",
+  "password": "password123",
+  "role": "admin"
+}
+
+### Menguji POST /auth/login
+POST {{baseUrl}}/auth/login
+Content-Type: application/json
+
+{
+  "username": "boker",
+  "password": "password123"
+}
+### Menguji POST /auth/register
+POST {{baseUrl}}/auth/register
+Content-Type: application/json
+
+{
+  "username": "gacor",
+  "password": "password123",
+  "role": "karyawan"
+}
+
+### Menguji POST /auth/login
+POST {{baseUrl}}/auth/login
+Content-Type: application/json
+
+{
+  "username": "gacor",
+  "password": "password123"
+}
+
+### Menguji GET /attendance
+GET {{baseUrl}}/attendance
+Authorization: {{tokenAdmin}}
+
+### Menguji POST /attendance
+POST {{baseUrl}}/attendance
+Authorization: {{tokenKaryawan}}
+Content-Type: application/json
+
+{
+  "date": "2025-07-05",
+  "status": "Present"
+}
+
+### Menguji PUT /attendance/
+PUT {{baseUrl}}/attendance/update
+Authorization: {{tokenAdmin}}
+Content-Type: application/json
+
+{
+  "id": "f8ec88d5-e0ec-4103-b250-65be7de2ccf6",
+  "status": "leave"
+}
+
+### Menguji DELETE /attendance/delete
+DELETE {{baseUrl}}/attendance/delete
+Authorization: {{tokenAdmin}}
+Content-Type: application/json
+
+{
+  "id": "65979df7-1783-47ef-9348-a509edcfa34d"
+}
+
+### Menguji GET /payroll
+GET {{baseUrl}}/payroll
+Authorization: {{tokenAdmin}}
+
+### Menguji POST /payroll
+POST {{baseUrl}}/payroll
+Authorization: {{tokenAdmin}}
+Content-Type: application/json
+
+{
+  "id": "962e5be5-9ac7-436a-9d7c-393d2af8131c",
+  "month": 4,
+  "year": 2024,
+  "salary": 6500
+}
+
+### Menguji GET /users
+GET {{baseUrl}}/users
+Authorization: {{tokenAdmin}}
+
+### Menguji PUT /users/profile
+PUT {{baseUrl}}/users/profile
+Authorization: {{tokenAdmin}}
+Content-Type: application/json
+
+{
+  "firstName": "abdi",
+  "lastName": "setiawan",
+  "email": "bedikadiryt@gmail.com",
+  "phoneNumber": "1234561789",
+  "address": "123 Stresdet, City",
+  "dateOfBirth": "1090-01-01",
+  "position": "President"
+}
+
+### Menguji endpoint show karyawan Payroll
+GET {{baseUrl}}/payroll/show
+Authorization: {{tokenKaryawan}}
